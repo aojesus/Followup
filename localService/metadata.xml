@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="http://agsapdev2aps4.slcagricola.com.br/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://agsapdev2aps4.slcagricola.com.br/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://agsapdev2aps4.slcagricola.com.br/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://agsapdev2aps4.slcagricola.com.br/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://agsapdev2aps4.slcagricola.com.br/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZMM_GW_FOLLOWUP_SRV" xml:lang="pt" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZMM_CDS_DOMAINSType" sap:label="Busca de intervalos dos Domínios" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DomainName"/>
+                    <PropertyRef Name="DomainValue"/>
+                </Key>
+                <Property Name="DomainName" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="Nome do domínio" sap:quickinfo="Denominação de um domínio"/>
+                <Property Name="DomainValue" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:text="Text" sap:label="Código" sap:quickinfo="Valores p/domínios: valor ind./limite inferior"/>
+                <Property Name="Text" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="Descrição" sap:quickinfo="30 caracteres"/>
+            </EntityType>
+            <EntityType Name="ZMM_QUO_FOLLOWUP_HEADERType" sap:label="QUO - Dados de Cotação" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UniqueID"/>
+                    <PropertyRef Name="UniqueItemID"/>
+                </Key>
+                <Property Name="UniqueID" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="UniqueItemID" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="QUOPurchasingDocumentNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Documento de compras" sap:quickinfo="Nº do documento de compras"/>
+                <Property Name="QUOCreateDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Dta.criação" sap:quickinfo="Data de criação do registro"/>
+                <Property Name="QUOCurrency" Type="Edm.String" MaxLength="5" sap:label="Moeda" sap:quickinfo="Código da moeda" sap:semantics="currency-code"/>
+                <Property Name="QUOCompany" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Empresa"/>
+                <Property Name="QUOPurchaseOrderCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Ctg.doc.compras" sap:quickinfo="Categoria do documento de compras"/>
+                <Property Name="QUOLastChangeOn" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Dta.criação" sap:quickinfo="Data de criação do registro"/>
+                <Property Name="QUOIssueDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Dta.criação" sap:quickinfo="Data de criação do registro"/>
+                <Property Name="QUODocumentDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data do documento" sap:quickinfo="Data do documento de compra"/>
+                <Property Name="QUOPurchaseRequisitionDocument" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Tipo doc.compras" sap:quickinfo="Tipo de documento de compras"/>
+                <Property Name="QUOCreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Criado por" sap:quickinfo="Nome do responsável que adicionou o objeto"/>
+                <Property Name="QUOPurchasingOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Organiz.compras" sap:quickinfo="Organização de compras"/>
+                <Property Name="QUOPurchasingGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Grupo de compradores"/>
+                <Property Name="QUOProcessingState" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Estado procmto." sap:quickinfo="Estado do processamento do documento de compras"/>
+                <Property Name="QUODescription" Type="Edm.String" MaxLength="40" sap:label="Nome do contrato"/>
+                <Property Name="QUODesiredVendor" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Fornecedor" sap:quickinfo="Nº conta do fornecedor"/>
+                <Property Name="QUOLanguage" Type="Edm.String" MaxLength="2" sap:label="Código de idioma"/>
+                <Property Name="QUOExchangeRate" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Taxa de câmbio"/>
+                <Property Name="QUOValidityDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Prz.apresent.cotação" sap:quickinfo="Prazo p/apresentação da cotação"/>
+                <Property Name="QUOFollowOnDocCat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Ctg.doc.subseqüente" sap:quickinfo="Categoria de documento de compras subsequente"/>
+                <Property Name="QUOFollowOnDocType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Tp.doc.subsequente" sap:quickinfo="Tipo de documento de compras subsequente"/>
+                <Property Name="QUOContactPerson" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Criado por" sap:quickinfo="Nome do responsável que adicionou o objeto"/>
+            </EntityType>
+            <EntityType Name="ZMM_RFQ_FOLLOWUPType" sap:label="Follow UP RFQ Fornecedores" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UniqueID"/>
+                </Key>
+                <Property Name="UniqueID" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="DocumentNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Documento de compras" sap:quickinfo="Nº do documento de compras"/>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Fornecedor" sap:quickinfo="Nº conta do fornecedor"/>
+                <Property Name="PartnerName" Type="Edm.String" MaxLength="35" sap:label="Nome" sap:quickinfo="Nome 1"/>
+                <Property Name="EMailAddress" Type="Edm.String" MaxLength="241" sap:label="Endereço de e-mail"/>
+                <Property Name="Company" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Empresa"/>
+                <Property Name="CompanyName" Type="Edm.String" MaxLength="25" sap:label="Nome da firma" sap:quickinfo="Denominação da firma ou empresa"/>
+                <Property Name="PurchaseOrderCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:text="to_PurchaseOrderCategory/Text" sap:label="Ctg.doc.compras" sap:quickinfo="Categoria do documento de compras" sap:value-list="standard"/>
+                <Property Name="IssueDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Dta.criação" sap:quickinfo="Data de criação do registro"/>
+                <Property Name="DocumentDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Data do documento" sap:quickinfo="Data do documento de compra"/>
+                <Property Name="PurchaseRequisitionDocument" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Tipo doc.compras" sap:quickinfo="Tipo de documento de compras"/>
+                <Property Name="CreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Criado por" sap:quickinfo="Nome do responsável que adicionou o objeto"/>
+                <Property Name="ClosingDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Prazo de candidatura"/>
+                <Property Name="PurchasingOrganization" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Organiz.compras" sap:quickinfo="Organização de compras"/>
+                <Property Name="PurchasingGroup" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Grupo de compradores"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Moeda" sap:quickinfo="Código da moeda" sap:semantics="currency-code"/>
+                <Property Name="ProcessingState" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Estado procmto." sap:quickinfo="Estado do processamento do documento de compras"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40" sap:label="Nome do contrato"/>
+                <Property Name="Language" Type="Edm.String" MaxLength="2" sap:label="Código de idioma"/>
+                <Property Name="ExchangeRate" Type="Edm.Decimal" Precision="9" Scale="5" sap:label="Taxa de câmbio"/>
+                <Property Name="ValidityDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Prz.apresent.cotação" sap:quickinfo="Prazo p/apresentação da cotação"/>
+                <Property Name="FollowOnDocCat" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Ctg.doc.subseqüente" sap:quickinfo="Categoria de documento de compras subsequente"/>
+                <Property Name="FollowOnDocType" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Tp.doc.subsequente" sap:quickinfo="Tipo de documento de compras subsequente"/>
+                <Property Name="ContactPerson" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Criado por" sap:quickinfo="Nome do responsável que adicionou o objeto"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1"/>
+                <NavigationProperty Name="to_Item" Relationship="ZMM_GW_FOLLOWUP_SRV.assoc_F781791F599F78CF88695317E3DB5FD0" FromRole="FromRole_assoc_F781791F599F78CF88695317E3DB5FD0" ToRole="ToRole_assoc_F781791F599F78CF88695317E3DB5FD0"/>
+                <NavigationProperty Name="to_PurchaseOrderCategory" Relationship="ZMM_GW_FOLLOWUP_SRV.assoc_05482E6578CA4C2EAFB959E938574191" FromRole="FromRole_assoc_05482E6578CA4C2EAFB959E938574191" ToRole="ToRole_assoc_05482E6578CA4C2EAFB959E938574191"/>
+                <NavigationProperty Name="to_QuoHeader" Relationship="ZMM_GW_FOLLOWUP_SRV.assoc_25D2D0840D8CF1A216CA092F539B5081" FromRole="FromRole_assoc_25D2D0840D8CF1A216CA092F539B5081" ToRole="ToRole_assoc_25D2D0840D8CF1A216CA092F539B5081"/>
+            </EntityType>
+            <EntityType Name="ZMM_RFQ_FOLLOWUP_ITEM_BASICType" sap:label="Dados de RFQ - Item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="UniqueID"/>
+                    <PropertyRef Name="PurchaseOrderNumber"/>
+                    <PropertyRef Name="PurchaseOrderItem"/>
+                </Key>
+                <Property Name="UniqueID" Type="Edm.String" Nullable="false" MaxLength="20"/>
+                <Property Name="PurchaseOrderNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Documento de compras" sap:quickinfo="Nº do documento de compras"/>
+                <Property Name="PurchaseOrderItem" Type="Edm.String" Nullable="false" MaxLength="5" sap:display-format="NonNegative" sap:label="Item" sap:quickinfo="Nº item do documento de compra"/>
+                <Property Name="Material" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Nº do material"/>
+                <Property Name="MaterialName" Type="Edm.String" MaxLength="40" sap:label="Texto breve"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Centro"/>
+                <Property Name="PlantName" Type="Edm.String" MaxLength="30" sap:label="Nome 1" sap:quickinfo="Nome"/>
+                <Property Name="StreetAndHouseNumber" Type="Edm.String" MaxLength="30" sap:label="Rua e nº"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Código postal"/>
+                <Property Name="City" Type="Edm.String" MaxLength="25" sap:label="Local"/>
+                <Property Name="Regio" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Região" sap:quickinfo="Região (estado federal, estado federado, província, condado)"/>
+                <Property Name="MaterialGroup" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Grupo de mercadorias"/>
+                <Property Name="RequestedQuantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="UnitOfMeasure" sap:label="Qtd.divisão" sap:quickinfo="Quantidade de divisão"/>
+                <Property Name="UnitOfMeasure" Type="Edm.String" MaxLength="3" sap:label="UM pedido" sap:quickinfo="Unidade de medida do pedido" sap:semantics="unit-of-measure"/>
+                <Property Name="Counter" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="Corresponde a" sap:quickinfo="Numerador para a conversão de UM de pedido em UM de base"/>
+                <Property Name="Denominator" Type="Edm.Decimal" Precision="5" Scale="0" sap:label="Denominador" sap:quickinfo="Denominador para a conversão de UM de pedido em UM base"/>
+                <Property Name="NetOrderAmountValue" Type="Edm.Decimal" Precision="14" Scale="3" sap:label="Valor líquido pedido" sap:quickinfo="Valor líquido do pedido em moeda de pedido"/>
+                <Property Name="UnitPrice" Type="Edm.Decimal" Precision="11" Scale="3"/>
+                <Property Name="GrossValue" Type="Edm.Decimal" Precision="14" Scale="3" sap:label="Valor pedido bruto" sap:quickinfo="Valor do pedido bruto em moeda de pedido"/>
+                <Property Name="ItemCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Categoria do item" sap:quickinfo="Ctg.item no documento compra"/>
+                <Property Name="AccountCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Ctg.ClassCont." sap:quickinfo="Categoria de classificação contábil"/>
+                <Property Name="PurchasingDocCategory" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Ctg.doc.compras" sap:quickinfo="Categoria do documento de compras"/>
+                <Property Name="PurcahsingRequisitionNumber" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Requisição de compra" sap:quickinfo="Nº requisição de compra"/>
+                <Property Name="PurcahsingRequisitionItem" Type="Edm.String" MaxLength="5" sap:display-format="NonNegative" sap:label="Item RC" sap:quickinfo="Nº do item da requisição de compra"/>
+                <Property Name="BusinessPartner" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Refer.forneced." sap:quickinfo="Referência a outro fornecedor"/>
+                <Property Name="QuantityAvailableForDelivery" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="UnitOfMeasureSupplier"/>
+                <Property Name="FreightPrice" Type="Edm.Decimal" Precision="11" Scale="3"/>
+                <Property Name="Discount" Type="Edm.Decimal" Precision="11" Scale="3"/>
+                <Property Name="RequestedDeliveryDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="PromisseDeliveryDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
+                <Property Name="CounterProposalValue" Type="Edm.Decimal" Precision="11" Scale="3"/>
+                <Property Name="Adaptation" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ZIVA" Type="Edm.String" MaxLength="4"/>
+                <Property Name="ShippingCompany" Type="Edm.String" MaxLength="255"/>
+                <Property Name="UnitOfMeasureSupplier" Type="Edm.String" MaxLength="3" sap:semantics="unit-of-measure"/>
+            </EntityType>
+            <Association Name="assoc_05482E6578CA4C2EAFB959E938574191" sap:content-version="1">
+                <End Type="ZMM_GW_FOLLOWUP_SRV.ZMM_RFQ_FOLLOWUPType" Multiplicity="1" Role="FromRole_assoc_05482E6578CA4C2EAFB959E938574191"/>
+                <End Type="ZMM_GW_FOLLOWUP_SRV.ZMM_CDS_DOMAINSType" Multiplicity="1" Role="ToRole_assoc_05482E6578CA4C2EAFB959E938574191"/>
+            </Association>
+            <Association Name="assoc_25D2D0840D8CF1A216CA092F539B5081" sap:content-version="1">
+                <End Type="ZMM_GW_FOLLOWUP_SRV.ZMM_RFQ_FOLLOWUPType" Multiplicity="1" Role="FromRole_assoc_25D2D0840D8CF1A216CA092F539B5081"/>
+                <End Type="ZMM_GW_FOLLOWUP_SRV.ZMM_QUO_FOLLOWUP_HEADERType" Multiplicity="1" Role="ToRole_assoc_25D2D0840D8CF1A216CA092F539B5081"/>
+            </Association>
+            <Association Name="assoc_F781791F599F78CF88695317E3DB5FD0" sap:content-version="1">
+                <End Type="ZMM_GW_FOLLOWUP_SRV.ZMM_RFQ_FOLLOWUPType" Multiplicity="1" Role="FromRole_assoc_F781791F599F78CF88695317E3DB5FD0"/>
+                <End Type="ZMM_GW_FOLLOWUP_SRV.ZMM_RFQ_FOLLOWUP_ITEM_BASICType" Multiplicity="*" Role="ToRole_assoc_F781791F599F78CF88695317E3DB5FD0"/>
+            </Association>
+            <EntityContainer Name="ZMM_GW_FOLLOWUP_SRV_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZMM_CDS_DOMAINS" EntityType="ZMM_GW_FOLLOWUP_SRV.ZMM_CDS_DOMAINSType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="ZMM_QUO_FOLLOWUP_HEADER" EntityType="ZMM_GW_FOLLOWUP_SRV.ZMM_QUO_FOLLOWUP_HEADERType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZMM_RFQ_FOLLOWUP" EntityType="ZMM_GW_FOLLOWUP_SRV.ZMM_RFQ_FOLLOWUPType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZMM_RFQ_FOLLOWUP_ITEM_BASIC" EntityType="ZMM_GW_FOLLOWUP_SRV.ZMM_RFQ_FOLLOWUP_ITEM_BASICType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_25D2D0840D8CF1A216CA092F539B5081" Association="ZMM_GW_FOLLOWUP_SRV.assoc_25D2D0840D8CF1A216CA092F539B5081" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZMM_RFQ_FOLLOWUP" Role="FromRole_assoc_25D2D0840D8CF1A216CA092F539B5081"/>
+                    <End EntitySet="ZMM_QUO_FOLLOWUP_HEADER" Role="ToRole_assoc_25D2D0840D8CF1A216CA092F539B5081"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_05482E6578CA4C2EAFB959E938574191" Association="ZMM_GW_FOLLOWUP_SRV.assoc_05482E6578CA4C2EAFB959E938574191" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZMM_RFQ_FOLLOWUP" Role="FromRole_assoc_05482E6578CA4C2EAFB959E938574191"/>
+                    <End EntitySet="ZMM_CDS_DOMAINS" Role="ToRole_assoc_05482E6578CA4C2EAFB959E938574191"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_F781791F599F78CF88695317E3DB5FD0" Association="ZMM_GW_FOLLOWUP_SRV.assoc_F781791F599F78CF88695317E3DB5FD0" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZMM_RFQ_FOLLOWUP" Role="FromRole_assoc_F781791F599F78CF88695317E3DB5FD0"/>
+                    <End EntitySet="ZMM_RFQ_FOLLOWUP_ITEM_BASIC" Role="ToRole_assoc_F781791F599F78CF88695317E3DB5FD0"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="ZMM_GW_FOLLOWUP_SRV.ZMM_RFQ_FOLLOWUPType/PurchaseOrderCategory" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="Busca de intervalos dos Domínios"/>
+                        <PropertyValue Property="CollectionPath" String="ZMM_CDS_DOMAINS"/>
+                        <PropertyValue Property="SearchSupported" Bool="true"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PurchaseOrderCategory"/>
+                                    <PropertyValue Property="ValueListProperty" String="DomainValue"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Text"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZMM_GW_FOLLOWUP_SRV.ZMM_GW_FOLLOWUP_SRV_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="http://agsapdev2aps4.slcagricola.com.br/sap/opu/odata/sap/ZMM_GW_FOLLOWUP_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://agsapdev2aps4.slcagricola.com.br/sap/opu/odata/sap/ZMM_GW_FOLLOWUP_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

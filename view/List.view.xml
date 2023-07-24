@@ -1,0 +1,193 @@
+<mvc:View
+  xmlns:m="sap.m"
+  xmlns="sap.f"
+  controllerName="com.prestativ.slc.followup.controller.List"
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns:core="sap.ui.core"
+  xmlns:sv="sap.ui.comp.smartvariants"
+  xmlns:smartfilterbar="sap.ui.comp.smartfilterbar"
+  xmlns:smarttable="sap.ui.comp.smarttable"
+>
+  <DynamicPage id="idListPage" fitContent="true" headerExpanded="true">
+    <title>
+      <DynamicPageTitle id="dynPageTitle">
+        <content>
+          <sv:SmartVariantManagement
+            id="__SVM01"
+            persistencyKey="smartPersKeyVariant"
+            showShare="true"
+            showExecuteOnSelection="true"
+            entitySet="ZMM_RFQ_FOLLOWUP"
+          />
+
+        </content>
+      </DynamicPageTitle>
+    </title>
+
+    <header>
+      <DynamicPageHeader id="dynPageHeader">
+        <content>
+          <smartfilterbar:SmartFilterBar
+            id="idSmartFilterBar"
+            smartVariant="__SVM01"
+            persistencyKey="smartPersKeyFilter"
+            showFilterConfiguration="true"
+            useToolbar="true"
+            entitySet="ZMM_RFQ_FOLLOWUP"
+          >
+            <smartfilterbar:controlConfiguration>
+              <smartfilterbar:ControlConfiguration
+                key="DocumentNumber"
+                visibleInAdvancedArea="true"
+                preventInitialDataFetchInValueHelpDialog="false"
+              />
+              <smartfilterbar:ControlConfiguration
+                key="BusinessPartner"
+                visible="false"
+              />
+              <smartfilterbar:ControlConfiguration
+                key="PartnerName"
+                visible="false"
+              />
+              <smartfilterbar:ControlConfiguration
+                key="lifnr_Text"
+                visible="false"
+              />
+
+              <smartfilterbar:ControlConfiguration
+                key="lifnr"
+                visible="false"
+              />
+              <smartfilterbar:ControlConfiguration
+                key="UniqueID"
+                visible="true"
+                visibleInAdvancedArea="true"
+                preventInitialDataFetchInValueHelpDialog="false"
+              />
+              <smartfilterbar:ControlConfiguration
+                key="EmailAddress"
+                visible="false"
+              />
+              <smartfilterbar:ControlConfiguration
+                key="Language"
+                visible="false"
+              />
+              <smartfilterbar:ControlConfiguration
+                key="CreatedBy"
+                visible="false"
+              />
+
+              <smartfilterbar:ControlConfiguration
+                key="ContactPerson"
+                visible="false"
+              />
+
+              <smartfilterbar:ControlConfiguration
+                key="PurchaseOrderCategory"
+                visible="false"
+              />
+
+              <smartfilterbar:ControlConfiguration
+                key="To_QuoHeader.QUOPurchaseOrderCategory"
+                visible="false"
+              />
+
+              <smartfilterbar:ControlConfiguration
+                key="to_QuoHeader.QUOContactPerson"
+                visible="false"
+              />
+
+              <smartfilterbar:ControlConfiguration
+                key="to_QuoHeader.QUOLanguage"
+                visible="false"
+              />
+
+              <smartfilterbar:ControlConfiguration
+                key="to_PurchaseOrderCategory.DomainValue"
+                visible="false"
+              />
+
+              <smartfilterbar:ControlConfiguration
+                key="to_Partner.lifnr"
+                visible="false"
+              />
+
+              <smartfilterbar:ControlConfiguration
+                key="to_Partner.lifnr_Text"
+                visible="false"
+              />
+
+
+            </smartfilterbar:controlConfiguration>
+          </smartfilterbar:SmartFilterBar>
+        </content>
+
+      </DynamicPageHeader>
+
+    </header>
+     <content>
+     <smarttable:SmartTable 
+      id="idSmartTable"
+      requestAtLeastFields="UniqueID"
+      header="{i18n>listViewSmartTableHeaderTitle}"    
+      persistencyKey="smartPersKeyTab"
+      smartVariant="__SVM01"
+      showVariantManagement="true"
+      showTablePersonalisation="true"
+      showFullScreenButton="true"
+      entitySet="ZMM_RFQ_FOLLOWUP"
+      smartFilterId="idSmartFilterBar"
+      tableType="ResponsiveTable"
+      enableAutoBinding="true"
+      beforeRebindTable="onBeforeRebinTableFollowup"
+      initiallyVisibleFields="DocumentNumber,BusinessPartner,PartnerName"
+     >
+    <m:Table>
+       <m:columns>
+         <m:Column>
+            <m:customData>
+              <core:CustomData
+                key="p13nData"
+                value='\{"columnkey": "Status" , "columnIndex": "0", "leadingProperty": "Status","sortProperty":"Status", "displayBehaviour": "descriptionOnly"}'
+              />
+              
+            </m:customData>
+            <m:Label text="{i18n>listViewSmartTableLabelStatus}"/>
+         </m:Column>
+       </m:columns> 
+
+       <m:items>
+         <m:ColumnListItem>
+           <m:cells>
+            <m:ObjectStatus
+                text="{
+                  path: 'Status',
+                  formatter: '.formatter.statusText'
+                }" 
+                state="{
+                  path: 'Status',
+                  formatter: '.formatter.statusState'    
+                }"
+                icon="{
+                  path: 'Status',
+                  formatter: '.formatter.statusIcon'
+
+                }"
+          
+            />
+           </m:cells>
+         </m:ColumnListItem>
+
+        </m:items>
+
+
+    </m:Table>
+      
+
+
+     </smarttable:SmartTable>      
+
+     </content>
+
+  </DynamicPage>
+</mvc:View>

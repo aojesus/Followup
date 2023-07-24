@@ -1,0 +1,19 @@
+<mvc:View 
+    xmlns:f="sap.f"
+    controllerName="com.prestativ.slc.followup.controller.App"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+  <App
+    id="app"
+    busy="{appView>/busy}"
+    busyIndicatorDelay="{appView>/busyIndicatorDelay}"
+  >
+      <f:FlexibleColumnLayout
+          id="layout"
+          layout="{appView>/layout}" 
+          backgroundDesign="Translucent"
+      >
+      </f:FlexibleColumnLayout>
+  </App>
+</mvc:View>
